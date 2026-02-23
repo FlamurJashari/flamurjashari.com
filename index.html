@@ -1,141 +1,596 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flamur Jashari — Web Developer</title>
+
+  <title>Flamur Jashari — Web Developer & IT Support</title>
+  <meta name="description" content="Flamur Jashari — Web Developer + IT Support. Ndihmoj me krijim website, optimizim performance, konfigurim domain/DNS dhe zgjidhje teknike për pajisje & rrjete." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://flamurjashari.com/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="Flamur Jashari — Web Developer & IT Support" />
+  <meta property="og:description" content="Krijim website, optimizim performance, konfigurim domain/DNS dhe IT support për rrjete & pajisje." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://flamurjashari.com/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Flamur Jashari — Web Developer & IT Support" />
+  <meta name="twitter:description" content="Krijim website, optimizim performance, konfigurim domain/DNS dhe IT support." />
+
+  <link rel="icon" type="image/svg+xml"
+    href='data:image/svg+xml;utf8,
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="%2338bdf8"/>
+          <stop offset="1" stop-color="%23818cf8"/>
+        </linearGradient>
+      </defs>
+      <rect width="64" height="64" rx="16" fill="%23020a13"/>
+      <circle cx="32" cy="32" r="22" fill="url(%23g)" opacity="0.95"/>
+      <text x="32" y="39" text-anchor="middle" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="%23020a13">FJ</text>
+    </svg>' />
+
   <style>
     :root{
-      --bg:#020617;
+      --bg:#020810; /* Ngjyrë pak më e errët për kontrast premium */
       --card:#0b1220;
-      --text:#e5e7eb;
+      --text:#f8fafc;
       --muted:#94a3b8;
-      --line:#1f2937;
+      --line:#1e293b;
       --accent:#38bdf8;
+      --accent2:#818cf8;
+      --ok:#22c55e;
+      --shadow: 0 24px 80px -12px rgba(0,0,0,0.5); /* Hije më e thellë */
+      --radius: 24px; /* Cepa pak më të rrumbullakosur */
     }
+
     *{box-sizing:border-box}
+    
+    html{scroll-behavior:smooth; overflow-x: hidden;}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(56,189,248,.18), transparent 60%),
-                  radial-gradient(900px 500px at 90% 30%, rgba(168,85,247,.14), transparent 55%),
-                  var(--bg);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 15%, rgba(56,189,248,.12), transparent 60%),
+        radial-gradient(900px 500px at 85% 65%, rgba(129,140,248,.10), transparent 60%),
+        radial-gradient(700px 400px at 55% 35%, rgba(34,197,94,.05), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,.02), transparent 30%),
+        var(--bg);
       color:var(--text);
+      position: relative;
+      overflow-x:hidden;
+      line-height: 1.6;
     }
-    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+
+    /* Zbutur Grid-i i prapavijës */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(148,163,184,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask-image: radial-gradient(700px 420px at 30% 20%, rgba(0,0,0,.9), transparent 70%);
+      mask-image: radial-gradient(700px 420px at 30% 20%, rgba(0,0,0,.9), transparent 70%);
+      opacity:.4;
+    }
+
+    .wrap{max-width:1020px; margin:0 auto; padding:40px 24px 80px; position:relative; z-index:1;}
+
     .top{
-      display:flex;gap:16px;align-items:center;justify-content:space-between;
-      padding:16px 0 8px;border-bottom:1px solid rgba(255,255,255,.06);
+      display:flex;
+      flex-direction: column;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+      padding-top:20px;
     }
-    .brand{font-weight:700;letter-spacing:.3px}
+    @media (min-width: 768px) {
+      .top {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      width: 100%;
+    }
+
     .pill{
-      display:inline-block;padding:7px 12px;border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;color:var(--muted);font-size:13px
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:fit-content;
+      border:1px solid rgba(148,163,184,.15);
+      background: rgba(255,255,255,.03);
+      padding:8px 16px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .hero{padding:46px 0 20px}
-    .hero h1{margin:0;font-size:44px;line-height:1.1}
-    .hero p{margin:14px 0 0;color:var(--muted);font-size:18px;max-width:720px}
-    .cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+
+    h1{
+      margin:0;
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height:1.05;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 300;
+      line-height:1.7;
+      max-width: 65ch;
+    }
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:24px;
+    }
+
     .btn{
-      display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;
-      font-weight:600;font-size:14px
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 24px;
+      border-radius:16px;
+      border:1px solid rgba(148,163,184,.15);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      font-weight: 500;
+      text-decoration:none;
+      transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select:none;
+      position:relative;
+      overflow:hidden;
     }
-    .btn.primary{background:var(--accent);color:#001018}
-    .btn.ghost{border:1px solid rgba(255,255,255,.12);color:var(--text)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
+    
+    .btn.primary{
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color:#020810;
+      border: none;
+      font-weight:700;
+    }
+
+    .btn:hover{
+      transform: translateY(-3px);
+      border-color: rgba(148,163,184,.3);
+      background: rgba(255,255,255,.08);
+    }
+    
+    .btn.primary:hover{
+      box-shadow: 0 10px 25px -5px rgba(56,189,248,0.4);
+      background: linear-gradient(135deg, #7dd3fc, #a5b4fc);
+    }
+
+    .btn svg{width:20px; height:20px; display:block}
+    .btn .ico{display:inline-flex; align-items:center; justify-content:center}
+
+    .logo-it{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:700;
+      color:var(--text);
+      background: rgba(11,18,32,.7);
+      border:1px solid rgba(148,163,184,.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      transition: all .25s ease;
+      flex-shrink:0;
+    }
+    
+    .logo-it::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: conic-gradient(from 0deg, rgba(56,189,248,.8), rgba(129,140,248,.8), rgba(34,197,94,.8), rgba(56,189,248,.8));
+      animation: spin 5s linear infinite;
+      opacity:.5;
+    }
+    
+    .logo-it::after{
+      content:"";
+      position:absolute;
+      inset:1px;
+      background: #020810;
+      border-radius:999px;
+    }
+    
+    .logo-it > *{position:relative; z-index:1}
+    
+    .logo-it:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(56,189,248,0.3);
+    }
+
+    hr.sep{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:40px 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:24px;
+    }
+
     .card{
-      grid-column:span 6;
-      background:rgba(11,18,32,.72);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:14px;
-      padding:16px;
-      backdrop-filter: blur(6px);
+      grid-column: span 12;
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding:32px;
+      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
     }
-    .card h2{margin:0 0 8px;font-size:18px}
-    .card p{margin:0;color:var(--muted);line-height:1.55}
-    .list{margin:10px 0 0;padding:0;list-style:none}
-    .list li{margin:8px 0;color:var(--muted)}
-    .list b{color:var(--text);font-weight:600}
-    .full{grid-column:span 12}
-    .footer{margin-top:26px;color:rgba(148,163,184,.8);font-size:13px}
-    .small{font-size:12px;color:rgba(148,163,184,.75)}
-    @media (max-width:720px){
-      .hero h1{font-size:34px}
-      .card{grid-column:span 12}
-      .top{flex-direction:column;align-items:flex-start}
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: conic-gradient(from 0deg, transparent, rgba(56,189,248,.15), transparent);
+      opacity:0;
+      transition: opacity .3s ease;
+      animation: spin 7s linear infinite;
+    }
+    
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:1px;
+      background: #060d18;
+      border-radius: calc(var(--radius) - 1px);
+    }
+    
+    .card > *{position:relative; z-index:1}
+
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(56,189,248,.3);
+    }
+    
+    .card:hover::before{opacity:1}
+
+    .card h2{
+      margin:0 0 12px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing:-0.02em;
+    }
+    
+    .card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:16px;
+      font-weight: 300;
+    }
+    
+    .card ul{
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height:1.8;
+      font-weight: 300;
+    }
+    
+    .card li b{color: var(--text); font-weight: 500;}
+    .muted{color:var(--muted)}
+
+    @media (min-width: 768px){
+      .card.half{grid-column: span 6;}
+      .card.third{grid-column: span 4;}
+    }
+
+    .reveal{
+      opacity:0;
+      transform: translateY(20px);
+      transition: opacity .7s cubic-bezier(0.4, 0, 0.2, 1), transform .7s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(34,197,94,.2);
+      background: rgba(34,197,94,.05);
+      color:#86efac;
+      font-size:13px;
+      font-weight: 500;
+      margin-top:8px;
+      width: fit-content;
+    }
+
+    a.inline{
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.inline:hover{color: var(--accent2);}
+
+    .socials{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+    
+    .social{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.05);
+      background: rgba(255,255,255,.02);
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      font-weight: 500;
+      transition: all .2s ease;
+    }
+    
+    .social:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+    }
+
+    .wa-float{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:50;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 20px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#020810;
+      font-weight:700;
+      background: #22c55e;
+      box-shadow: 0 10px 30px -10px rgba(34,197,94,0.6);
+      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .wa-float:hover{
+      transform: translateY(-4px) scale(1.02); 
+      background: #16a34a;
+      box-shadow: 0 15px 40px -10px rgba(34,197,94,0.7);
+    }
+    
+    .wa-float svg{width:22px; height:22px}
+    
+    @media (max-width: 480px){
+      .wa-float span{display:none;}
+      .wa-float{padding:14px; right: 16px; bottom: 16px;}
+    }
+
+    .footer{
+      margin-top:60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      text-align:center;
+      font-weight: 300;
+    }
+
+    @keyframes spin{
+      to{ transform: rotate(360deg); }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">Flamur Jashari</div>
-      <span class="pill">Web Developer • IT Support</span>
-    </div>
+  <a class="wa-float" target="_blank" rel="noopener"
+     href="https://wa.me/38346124923?text=Pershendetje%20Flamur%2C%20kam%20nevoje%20per%20ndihme%20me%20website%2FIT.">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+      <path fill="currentColor" d="M12 2a10 10 0 0 0-8.53 15.2L2 22l4.92-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.16l-.3-.18-2.9.83.82-2.82-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/>
+      <path fill="currentColor" d="M16.8 14.1c-.25-.13-1.45-.72-1.68-.8-.22-.08-.38-.12-.54.12-.16.25-.62.8-.76.96-.14.16-.28.18-.53.06-.25-.13-1.05-.38-2-.2-.74-.16-1.37-1.32-1.53-1.57-.16-.25-.02-.38.12-.5.12-.12.25-.28.38-.42.12-.14.16-.25.25-.42.08-.16.04-.3-.02-.42-.06-.13-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.1 3.64.57.25 1.02.4 1.36.5.57.18 1.08.16 1.48.1.45-.06 1.45-.6 1.66-1.18.2-.57.2-1.05.14-1.18-.06-.12-.22-.2-.47-.32Z"/>
+    </svg>
+    <span>WhatsApp</span>
+  </a>
 
-    <section class="hero">
-      <h1>Flamur Jashari 👋</h1>
-      <p>
-        Web Developer & IT Support. Ndihmoj me krijim website, optimizim performance,
-        konfigurim domain/DNS, dhe zgjidhje teknike për pajisje & rrjete.
-      </p>
+  <main class="wrap">
+    <section class="top reveal">
+      <div class="brand">
+        <div class="pill">Web Developer • IT Support</div>
 
-      <div class="cta">
-        <a class="btn primary" href="#contact">Contact</a>
-        <a class="btn ghost" href="#services">Services</a>
+        <h1>Flamur Jashari <span aria-hidden="true">👋</span></h1>
+
+        <p class="lead">
+          Web Developer + IT Support. Ndihmoj me krijim website, optimizim performance,
+          konfigurim domain/DNS, dhe zgjidhje teknike për pajisje & rrjete.
+        </p>
+
+        <div class="btnrow">
+          <a class="btn primary" href="#contact" aria-label="Shko te Contact">
+            <span class="ico">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2"/>
+                <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+            Contact
+          </a>
+
+          <a class="btn" href="#services" aria-label="Shko te Services">
+            <span class="ico">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 12h3M17 12h3M12 4v3M12 17v3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+            Services
+          </a>
+        </div>
+
+        <div class="badge" title="Location">📍 Albania / Tiranë</div>
       </div>
-      <div class="small" style="margin-top:10px;">
-        
+
+      <div class="logo-it" aria-label="IT badge">
+        <span aria-hidden="true">💻</span>
+        <span>IT • DEV</span>
       </div>
     </section>
+
+    <hr class="sep reveal" />
 
     <section id="services" class="grid">
-      <div class="card">
+      <div class="card half reveal">
         <h2>Web Development</h2>
         <p>Landing pages, portfolio, website për biznes, dhe mirëmbajtje.</p>
-        <ul class="list">
-          <li>• <b>Design modern</b> + responsive (telefon/PC)</li>
-          <li>• <b>SEO bazik</b> + shpejtësi e mirë</li>
-          <li>• <b>Deploy</b> në GitHub Pages / hosting</li>
+        <ul>
+          <li><b>Design modern</b> + responsive (telefon/PC)</li>
+          <li><b>SEO bazik</b> + shpejtësi e mirë</li>
+          <li><b>Deploy</b> në GitHub Pages / hosting</li>
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card half reveal">
         <h2>IT & Troubleshooting</h2>
         <p>Zgjidhje për probleme të zakonshme IT & konfigurime.</p>
-        <ul class="list">
-          <li>• Setup rrjeti / Wi-Fi / router</li>
-          <li>• Email setup & DNS (MX, SPF, DKIM)</li>
-          <li>• Website/DNS “nuk hapet” — diagnostikim</li>
+        <ul>
+          <li>Setup rrjeti / Wi-Fi / router</li>
+          <li>Email setup & DNS (MX, SPF, DKIM)</li>
+          <li>Website/DNS “nuk hapet” — diagnostikim</li>
         </ul>
       </div>
 
-      <div class="card full">
+      <div class="card third reveal">
         <h2>Domain & DNS</h2>
-        <p>
-          
-        </p>
+        <p>Konfigurim domaini, DNS records dhe HTTPS.</p>
+        <p class="muted">Lidhje e domainit me hosting + konfigurim korrekt DNS (A / CNAME). Aktivizim SSL/HTTPS.</p>
+      </div>
+
+      <div class="card third reveal">
+        <h2>Performance</h2>
+        <p>Optimizim speed (Core Web Vitals), cache, imazhe & best practices.</p>
+        <p class="muted">Që faqja me u hap shpejt edhe në mobile.</p>
+      </div>
+
+      <div class="card third reveal">
+        <h2>Security</h2>
+        <p>Konfigurim bazik sigurie: HTTPS, DNS hygiene, anti-spoofing (SPF, DKIM, DMARC).</p>
+        <p class="muted">Mbrojtje bazike kundër spoofing + konfigurim i pastër DNS.</p>
       </div>
     </section>
 
-    <section id="contact" class="grid" style="margin-top:14px;">
-      <div class="card full">
+    <section id="contact" class="grid" style="margin-top:24px">
+      <div class="card reveal">
         <h2>Contact</h2>
-        <p>
-          Email (placeholder): <b>flamurjashari@gmx.com</b><br/>
-      
+        <p>Kontakto direkt me email, WhatsApp, ose rrjete sociale:</p>
+
+        <div class="btnrow">
+          <a class="btn primary"
+             href="mailto:info@flamurjashari.com?subject=Website%20Inquiry%20-%20Flamur%20Jashari">
+            📧 Dërgo Email
+          </a>
+
+          <a class="btn"
+             target="_blank"
+             rel="noopener"
+             href="https://wa.me/38346124923?text=Pershendetje%20Flamur%2C%20kam%20nevoje%20per%20ndihme%20me%20website%2FIT.">
+            💬 Dërgo Mesazh
+          </a>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a class="social" target="_blank" rel="noopener" href="https://instagram.com/flamurjashari7" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 16.2A4.2 4.2 0 1 0 12 7.8a4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M17.3 6.9h.01" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            Instagram
+          </a>
+
+          <a class="social" target="_blank" rel="noopener" href="https://facebook.com/flamurjashari4" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 8.5V7.3c0-.8.4-1.3 1.4-1.3H17V3.2h-2.2C12.7 3.2 12 4.7 12 6.9v1.6H10v2.6h2V21h3v-9.9h2.1l.3-2.6H15Z" fill="currentColor"/>
+            </svg>
+            Facebook
+          </a>
+
+          <a class="social" target="_blank" rel="noopener" href="https://x.com/flamurjashari4" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M18.6 3H21l-5.2 6 6.1 12h-4.3l-3.9-7.7L7.6 21H5.2l5.7-6.7L5 3h4.4l3.5 6.7L18.6 3Zm-1.5 16h1.2L8 4.9H6.7l10.4 14.1Z" fill="currentColor"/>
+            </svg>
+            X
+          </a>
+        </div>
+
+        <p style="margin-top:24px" class="muted">
+          Email: <a class="inline" href="mailto:info@flamurjashari.com">info@flamurjashari.com</a><br/>
+          WhatsApp: <a class="inline" target="_blank" rel="noopener" href="https://wa.me/38346124923">+383 46 124 923</a><br/>
+          Lokacion: Albania / Tiranë
         </p>
       </div>
     </section>
 
-    <div class="footer">
-      © <span id="y"></span> Flamur Jashari 
+    <div class="footer reveal">
+      © <span id="y"></span> Flamur Jashari. All rights reserved.
     </div>
-  </div>
+  </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("show");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    els.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
