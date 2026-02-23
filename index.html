@@ -85,6 +85,7 @@
     .wrap{max-width:1020px; margin:0 auto; padding:40px 24px 80px; position:relative; z-index:1;}
 
     .top{
+      position: relative; /* E rëndësishme për vendosjen e logos në mobile */
       display:flex;
       flex-direction: column;
       align-items:flex-start;
@@ -232,6 +233,24 @@
       box-shadow: 0 10px 30px -10px rgba(56,189,248,0.3);
     }
 
+    /* Rregullimi për Mobile i logos IT DEV */
+    @media (max-width: 767px) {
+      .logo-it {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        transform: scale(0.9);
+        transform-origin: top right;
+      }
+      .logo-it:hover {
+        transform: translateY(-2px) scale(0.9);
+      }
+      /* I japim pak hapësirë elementit Pill (Digital Solutions) që të mos përplaset me logon në ekrane shumë të vogla */
+      .pill {
+        max-width: calc(100% - 100px);
+      }
+    }
+
     hr.sep{
       border:0;
       border-top:1px solid var(--line);
@@ -288,7 +307,6 @@
     
     .card:hover::before{opacity:1}
 
-    /* SHTUAR: Stili për ikonat brenda kartave */
     .card-icon {
         display: inline-flex;
         align-items: center;
@@ -305,13 +323,11 @@
         width: 28px;
         height: 28px;
     }
-    /* Variacion për kartën e sigurisë (jeshile) */
     .card.security .card-icon {
          background: rgba(34,197,94, 0.1);
          color: var(--ok);
          border-color: rgba(34,197,94, 0.2);
     }
-
 
     .card h2{
       margin:0 0 12px;
@@ -613,10 +629,9 @@
       </div>
     </section>
 
-      <div class="footer reveal">
+    <div class="footer reveal">
       © <span id="y"></span> Flamur Jashari. All rights reserved.
     </div>
-
   </main>
 
   <script>
