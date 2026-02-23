@@ -255,6 +255,9 @@
       -webkit-backdrop-filter: blur(10px);
       position:relative;
       overflow:hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .card::before{
@@ -285,11 +288,36 @@
     
     .card:hover::before{opacity:1}
 
+    /* SHTUAR: Stili për ikonat brenda kartave */
+    .card-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(56,189,248, 0.1);
+        color: var(--accent);
+        margin-bottom: 20px;
+        border: 1px solid rgba(56,189,248, 0.2);
+    }
+    .card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    /* Variacion për kartën e sigurisë (jeshile) */
+    .card.security .card-icon {
+         background: rgba(34,197,94, 0.1);
+         color: var(--ok);
+         border-color: rgba(34,197,94, 0.2);
+    }
+
+
     .card h2{
       margin:0 0 12px;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing:-0.02em;
+      letter-spacing:-0.01em;
     }
     
     .card p{
@@ -480,6 +508,9 @@
 
     <section id="services" class="grid">
       <div class="card half reveal">
+        <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        </div>
         <h2>Web Development</h2>
         <p>Zhvillim i faqeve të internetit moderne, të përshtatura për t'u rritur bashkë me biznesin tuaj.</p>
         <ul>
@@ -490,6 +521,9 @@
       </div>
 
       <div class="card half reveal">
+        <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+        </div>
         <h2>IT Support & Infrastrukturë</h2>
         <p>Mbështetje teknike gjithëpërfshirëse dhe administrim i sistemeve për të shmangur ndërprerjet në punë.</p>
         <ul>
@@ -500,18 +534,27 @@
       </div>
 
       <div class="card third reveal">
+        <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.83a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+        </div>
         <h2>Menaxhim Domain & DNS</h2>
         <p>Menaxhim i saktë i infrastrukturës suaj të domeineve.</p>
         <p class="muted">Integrim i pandërprerë i DNS records (A, CNAME, TXT) dhe implementim i certifikatave të sigurisë SSL (HTTPS) për besueshmëri absolute.</p>
       </div>
 
       <div class="card third reveal">
+        <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </div>
         <h2>Optimizim & Performancë</h2>
         <p>Aplikimi i standardeve më të fundit (Core Web Vitals) për shpejtësi maksimale.</p>
         <p class="muted">Optimizim i thellë i aseteve dhe cache për të garantuar një eksperiencë premium për përdoruesit edhe në pajisjet mobile.</p>
       </div>
 
-      <div class="card third reveal">
+      <div class="card third reveal security">
+        <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
         <h2>Siguri & Besueshmëri</h2>
         <p>Implementimi i protokolleve thelbësore të sigurisë.</p>
         <p class="muted">Konfigurim i specializuar (SPF, DKIM, DMARC) për të mbrojtur identitetin dixhital të biznesit dhe për të shmangur abuzimet teknike.</p>
@@ -570,9 +613,10 @@
       </div>
     </section>
 
-    <div class="footer reveal">
-      © <span id="y"></span> Flamur Jashari. Të gjitha të drejtat e rezervuara.
+      <div class="footer reveal">
+      © <span id="y"></span> Flamur Jashari. All rights reserved.
     </div>
+
   </main>
 
   <script>
